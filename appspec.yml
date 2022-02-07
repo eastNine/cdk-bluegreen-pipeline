@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+  - source: deploy/
+    destination: /home/ubuntu
+hooks:
+  #ApplicationStop:
+  BeforeInstall:
+    - location: deploy/init.sh
+      timeout: 300
+  ApplicationStart:
+    - location: deploy/start.sh
+      timeout: 3600
+#   ValidateService:
+#     - location: validate.sh
+#       timeout: 300
